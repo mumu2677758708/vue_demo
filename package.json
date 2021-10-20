@@ -1,9 +1,10 @@
 {
-  "name": "vue_demo",
+  "name": "vue",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve-155": "vue-cli-service serve --mode test155",
+    "serve": "vue-cli-service serve --mode online",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -15,9 +16,13 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "axios": "^0.21.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0",
+    "vue-router": "^3.5.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
