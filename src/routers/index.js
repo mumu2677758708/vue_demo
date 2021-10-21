@@ -8,6 +8,18 @@ const router = new VueRouter({
       path: '/',
       title: '首页',
       component: () => import('../views/Index.vue')
+    },
+    {
+      name: 'Mine',
+      path: '/mine',
+      title: '我的',
+      component: () => import('../views/Mine.vue')
+    },
+    {
+      name: 'Evaluation',
+      path: '/evaluation',
+      title: '风险测评',
+      component: () => import('../views/Evaluation.vue')
     }
   ]
 })
