@@ -20,6 +20,12 @@ const router = new VueRouter({
       path: '/evaluation',
       title: '风险测评',
       component: () => import('../views/Evaluation.vue')
+    },
+    {
+      name: 'StickyFooter',
+      path: '/stickyFooter',
+      title: '粘性footer',
+      component: () => import('../views/StickyFooter.vue')
     }
   ]
 })

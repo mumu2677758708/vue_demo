@@ -10,6 +10,24 @@
     right:0;
     z-index:999;
     background:#fffafa;
+    &-text{
+      position:absolute;
+      bottom:0.8rem;
+      left:0;
+      right:0;
+    }
+    &-name{
+      text-align:center;
+      font-size:1.4rem;
+      color:#222222;
+      margin: 0;
+    }
+    &-sub{
+      text-align:center;
+      font-size:1rem;
+      color:#91959A;
+      margin: 0;
+    }
   }
   &-circles{
     width:100%;
@@ -17,6 +35,52 @@
     overflow:hidden;
     position:relative;
     top:-2rem;
+  }
+  &-questions{
+    min-height:700px;
+    padding:0 1.28rem;
+  }
+  &-unit{
+    margin:0.85rem 0;
+    padding:0.85rem 2.7rem 0.85rem 0.85rem;
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+    box-shadow:0 6px 35px 0 rgba(0, 0, 0, 0.10);
+    border-radius:4px;
+    position:relative;
+    z-index:5;
+    &:after{
+      width:2.7rem;
+      position:absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      content:'';
+      background:url(../assets/images/icon/icon-arrow-right.png) center no-repeat;
+      background-size:0.6rem auto;
+    }
+    &.disable:after{
+      background:none;
+    }
+  }
+  &-ques{
+    line-height:1.6rem;
+    display:flex;
+    align-items:center;
+    color:#222222;
+    font-size:1.3rem;
+    text-align:justify;
+    font-weight: bold;
+  }
+  &-answ{
+    margin-top:0.5rem;
+    line-height:1.6rem;
+    display:flex;
+    align-items:center;
+    color:#91959A;
+    font-size:1.3rem;
+    text-align:justify;
   }
 }
 .evaluation-layer-01,
@@ -36,33 +100,53 @@
 }
 .evaluation-layer-01{
   background-image: url('../assets/images/animate/bg-01.png');
-  background-size: 100% auto;
+  background-size: auto 100%;
   animation: circle 1.5s ease-out alternate;
   z-index: 1;
 }
 .evaluation-layer-02 {
   background-image: url('../assets/images/animate/bg-02.png');
-  background-size: 60% auto;
+  background-size: 80% auto;
   animation: circle 2s ease-out;
   z-index: 2;
 }
 .evaluation-layer-03 {
   background-image: url('../assets/images/animate/img-01.png');
-  background-size: 30% auto;
+  background-size: 50% auto;
   animation: circle 2.5s ease-out;
   z-index: 3;
 }
 .evaluation-layer-04 {
   background-image: url('../assets/images/animate/img-02.png');
-  background-size: 36% auto;
+  background-size: 60% auto;
   animation: circle 2s ease-out reverse;
   z-index: 4;
 }
 .evaluation-layer-05 {
   background-image: url('../assets/images/animate/img-03.png');
-  background-size: 45% auto;
+  background-size: 70% auto;
   animation: circle 1.5s ease-out reverse;
   z-index: 5;
+}
+.evaluation-layer-number {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -3rem;
+  z-index: 6;
+  text-align: center;
+  font-size: 2.2rem;
+  color: #FF403B;
+  i{
+    padding-top:0.6rem;
+    padding-left:0.2rem;
+    font-style:normal;
+    font-size:1.2rem;
+  }
 }
 @keyframes circle {
   to{

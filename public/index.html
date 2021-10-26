@@ -15,4 +15,21 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    (function(){
+    var win = window,
+        doc = document,
+        docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+    function rem(){
+        if(!docEl.clientWidth) return;
+        var clientWidth = docEl.clientWidth > 750 ? 750 : docEl.clientWidth<320 ? 320 : docEl.clientWidth;
+        console.log(clientWidth)
+        docEl.style.fontSize = 10 * (clientWidth / 320) + 'px';
+    };
+    rem();
+    win.addEventListener(resizeEvt, rem, false)
+    docEl.addEventListener('DOMContentLoaded', rem, false)
+})()
+  </script>
 </html>
