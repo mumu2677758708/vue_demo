@@ -26,6 +26,12 @@ const router = new VueRouter({
       path: '/stickyFooter',
       title: '粘性footer',
       component: () => import('../views/StickyFooter.vue')
+    },
+    {
+      name: 'transact_big',
+      path: '/transact/big',
+      title: '订单已受理',
+      component: () => import('../views/TransactBig.vue')
     }
   ]
 })

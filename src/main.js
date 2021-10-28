@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './routers/index.js'
 import { ScrollFixed } from './utils/directive'
 // import './styles/app.scss'
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
 
 Vue.config.productionTip = false
 

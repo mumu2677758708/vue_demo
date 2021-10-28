@@ -21,7 +21,7 @@
         :id="'ques-'+item.titleId" v-for="(item, itemIdx) in list" :key="'evaluation-'+itemIdx"
         @click="onShowQuestion(itemIdx, item.itemList.length < 2)">
         <dt class="evaluation-new-ques">{{itemIdx + 1}}.{{item.titleName}}</dt>
-        <!-- <dd class="evaluation-new-answ">{{formatAnswer(item)}}</dd> -->
+        <dd class="evaluation-new-answ">{{formatAnswer(item)}}</dd>
       </dl>
     </transition-group>
   </div>
@@ -29,6 +29,34 @@
 <script>
 import { questionsNew } from '../assets/mock/evaluation'
 import AM from '../utils/modules/singleton.am'
+function CubicEaseOut (t, b, c, d) {
+  return c * ((t = t / d - 1) * t * t + 1) + b
+}
+let running
+function scrollNext (id) {
+  AM.cancelAF.call(window, running)
+  var nextDom = document.querySelector('#' + id)
+  var t = 0
+  var b = document.documentElement.scrollTop || document.body.scrollTop
+  var c = nextDom.offsetTop - b
+  var d = 120
+  running = function () {
+    if( t <= d ) {
+      var v = CubicEaseOut(t, b, c, d)
+      document.documentElement.scrollTop = v
+      document.body.scrollTop = v
+      AM.requestAF.call(window, running)
+      t++
+    } else {
+      AM.cancelAF.call(window, running)
+      document.documentElement.scrollTop = nextDom.offsetTop
+      document.body.scrollTop = nextDom.offsetTop
+    }
+  }
+  if( c>5 ) {
+    running()
+  }
+}
 function initEvaluationPage(vm) {
   const defaultResult = {
     '00068': '001',
@@ -56,7 +84,6 @@ function initEvaluationPage(vm) {
   var now = new Date().getTime()
   function slider() {
     var _now = new Date().getTime()
-    console.log(_now - now)
     if (i >= questionsNew.length) {
       AM.cancelAF.call(window, slider)
       return
@@ -71,6 +98,9 @@ function initEvaluationPage(vm) {
           questionsNew[i]
         )
         vm.list.push(nextQuestion)
+        if(i-5>-1 && (i-5) % 7 === 0) {
+          scrollNext('ques-' + vm.list[i-5].titleId)
+        }
         i++
       }
       now = _now
@@ -104,6 +134,12 @@ export default {
       // 仅有一项选择时，禁用选择
       if (disable) return
     },
+    formatAnswer(item) {
+      if(item.default && typeof item.default === 'string') {
+        const answer = item.itemList.find( answ => answ.value === item.default)
+        return answer.text
+      }
+    }
   },
 }
 </script>

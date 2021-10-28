@@ -81,6 +81,7 @@
     color:#91959A;
     font-size:1.3rem;
     text-align:justify;
+    margin-left: 0;
   }
 }
 .evaluation-layer-01,
@@ -147,6 +148,17 @@
     font-style:normal;
     font-size:1.2rem;
   }
+}
+.slide-question-enter-active,
+.slide-question-leave-active {
+  transition: transform .2s ease-out;
+}
+
+.slide-question-enter,
+.slide-question-leave-to
+/* .fade-leave-active below version 2.1.8 */
+  {
+  transform: translateX(110%);
 }
 @keyframes circle {
   to{
