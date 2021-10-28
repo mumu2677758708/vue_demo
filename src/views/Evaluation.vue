@@ -32,7 +32,7 @@ import AM from '../utils/modules/singleton.am'
 function CubicEaseOut (t, b, c, d) {
   return c * ((t = t / d - 1) * t * t + 1) + b
 }
-let running
+var running
 function scrollNext (id) {
   AM.cancelAF.call(window, running)
   var nextDom = document.querySelector('#' + id)
@@ -40,12 +40,13 @@ function scrollNext (id) {
   var b = document.documentElement.scrollTop || document.body.scrollTop
   var c = nextDom.offsetTop - b
   var d = 120
+  console.log(b)
   running = function () {
     if( t <= d ) {
       var v = CubicEaseOut(t, b, c, d)
       document.documentElement.scrollTop = v
       document.body.scrollTop = v
-      AM.requestAF.call(window, running)
+      AM.animation = AM.requestAF.call(window, running)
       t++
     } else {
       AM.cancelAF.call(window, running)
@@ -85,6 +86,7 @@ function initEvaluationPage(vm) {
   function slider() {
     var _now = new Date().getTime()
     if (i >= questionsNew.length) {
+      AM.cancelAF.call(window, running)
       AM.cancelAF.call(window, slider)
       return
     }
@@ -124,8 +126,12 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
+      document.documentElement.scrollTop = document.body.scrollTop = 0
       initEvaluationPage(vm)
     })
+  },
+  beforeRouteUpdate() {
+    initEvaluationPage(this)
   },
   methods: {
     // 点击问题

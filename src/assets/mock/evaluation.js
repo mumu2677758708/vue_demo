@@ -180,4 +180,160 @@ export const questionsNew = [{
     "text": "以上都不是",
     "value": "B"
   }]
+}, {
+  "titleId": "crsType",
+  "titleName": "您是否仅为中国税收居民？",
+  "itemList": [{
+    "text": "是",
+    "value": "0"
+  }]
+}, {
+  "titleId": "invaliDate",
+  "titleName": "您的身份证有效期为？",
+  "itemList": [{
+    "text": "长期有效",
+    "value": "99991231"
+  }, {
+    "text": "选择截止期",
+    "value": "1"
+  }]
+}, {
+  "titleId": "workCode",
+  "titleName": "您的职业为？",
+  "itemList": [{
+    "value": "0",
+    "text": "国家机关、党群组织、企业、事业单位负责人"
+  }, {
+    "value": "1",
+    "text": "专业技术人员"
+  }, {
+    "value": "2",
+    "text": "教学、金融、文艺工作人员"
+  }, {
+    "value": "3",
+    "text": "国家办事人员和相关人员"
+  }, {
+    "value": "4",
+    "text": "商业、服务业人员"
+  }, {
+    "value": "5",
+    "text": "农、林、牧、渔、水利业生产人员"
+  }, {
+    "value": "6",
+    "text": "生产、运输设备操作人员及相关人员"
+  }, {
+    "value": "X",
+    "text": "军人"
+  }, {
+    "value": "Y",
+    "text": "其它从业人员"
+  }, {
+    "value": "09",
+    "text": "事业单位"
+  }, {
+    "value": "10",
+    "text": "国有企业"
+  }]
+}, {
+  "titleId": "educational",
+  "titleName": "您的学历为？",
+  "itemList": [{
+    "value": "1",
+    "text": "初中及以下"
+  }, {
+    "value": "2",
+    "text": "高中/中专"
+  }, {
+    "value": "3",
+    "text": "大专/本科"
+  }, {
+    "value": "4",
+    "text": "硕士及以上"
+  }]
+}, {
+  "titleId": "area",
+  "titleName": "您所在的省市区为？",
+  "itemList": []
+}, {
+  "titleId": "preYieldFlag",
+  "titleName": "您对于基金投资的期望收益为？",
+  "itemList": [{
+    "value": "A",
+    "text": "年收益率为4.14%以内"
+  }, {
+    "value": "B",
+    "text": "年收益率为4.14%---6.97%"
+  }, {
+    "value": "C",
+    "text": "年收益率为6.97%---9.98%"
+  }, {
+    "value": "D",
+    "text": "年收益率为9.98%---12.29%"
+  }, {
+    "value": "E",
+    "text": "年收益率为12.29%以上"
+  }]
+}, {
+  "titleId": "badIntegrity",
+  "titleName": "您是否有不良诚信记录？",
+  "itemList": [{
+    "value": "0",
+    "text": "无"
+  }, {
+    "value": "1",
+    "text": "包含中国人民银行征信中心"
+  }, {
+    "value": "2",
+    "text": "最高人民法院失信被执行人名单"
+  }, {
+    "value": "3",
+    "text": "工商行政管理机构"
+  }, {
+    "value": "4",
+    "text": "税务管理机构"
+  }, {
+    "value": "5",
+    "text": "监管机构、自律组织"
+  }, {
+    "value": "6",
+    "text": "证券经营机构从事投资活动时产生的违约等失信行为记录"
+  }, {
+    "value": "7",
+    "text": "恶意维权等不当行为信息"
+  }, {
+    "value": "8",
+    "text": "其他"
+  }]
+}, {
+  "titleId": "custFundTimeLimit",
+  "titleName": "您的过往投资时间？",
+  "itemList": [{
+    "value": "A",
+    "text": "半(含)年以内"
+  }, {
+    "value": "B",
+    "text": "1(含)年以内"
+  }, {
+    "value": "C",
+    "text": "3(含)年以内"
+  }, {
+    "value": "D",
+    "text": "3年以上"
+  }]
+}, {
+  "titleId": "investmentVarieties",
+  "titleName": "您的过往投资品种？",
+  "itemList": [{
+    "value": "A",
+    "text": "期货/房地产/融资融券"
+  }, {
+    "value": "B",
+    "text": "股票/股票型、混合型、偏股型基金"
+  }, {
+    "value": "C",
+    "text": "货币型、债券型基金/债券"
+  }, {
+    "value": "D",
+    "text": "银行存款"
+  }]
 }]
