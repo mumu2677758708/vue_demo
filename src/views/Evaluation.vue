@@ -100,7 +100,7 @@ function initEvaluationPage(vm) {
           questionsNew[i]
         )
         vm.list.push(nextQuestion)
-        if(i-5>-1 && (i-5) % 7 === 0) {
+        if (i - 5 > -1 && (i - 5) % 7 === 0) {
           scrollNext('ques-' + vm.list[i-5].titleId)
         }
         i++

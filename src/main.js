@@ -17,6 +17,9 @@ router.beforeEach((to, from, next) => {
 })
 
 new Vue({
+  mounted() {
+    console.log(this.$root, 'root')
+  },
   router,
   render: h => h(App),
 }).$mount('#app')
