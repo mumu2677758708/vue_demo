@@ -28,6 +28,12 @@ const router = new VueRouter({
       component: () => import('../views/StickyFooter.vue')
     },
     {
+      name: 'TitleClamp',
+      path: '/titleClamp',
+      title: '文本超出不定行',
+      component: () => import('../views/css/TitleClamp.vue')
+    },
+    {
       name: 'transact_big',
       path: '/transact/big',
       title: '订单已受理',
