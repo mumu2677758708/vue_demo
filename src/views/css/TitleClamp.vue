@@ -62,32 +62,4 @@
     }
   }
 }
-// .item {
-//   height: 6.7rem;
-//   overflow: hidden;
-//   .title {
-//     font-weight: bold;
-//     font-size: 1.5rem;
-//     // text-align: justify;
-//     display: -webkit-box;
-//     -webkit-box-orient: vertical;
-//     overflow: hidden;
-//     -webkit-line-clamp: 2;
-//   }
-//   .desc {
-//     color: #666;
-//     font-size: 1.25rem;
-//     margin-top: 1rem;
-//     // text-align: justify;
-//     &::before{
-//       content: '...';
-//       float: right;
-//       height: 100%;
-//       display: flex;
-//       align-items: flex-end;
-//       background-color: pink;
-//       shape-outside: inset(calc(100%-1.5em) 0 calc(100%-1.5em));
-//     }
-//   }
-// }
 </style>

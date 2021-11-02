@@ -21,3 +21,7 @@
 ## day3
   - 在入口js文件的new Vue({})中可以写data函数、methods等，全局都可使用    可通过this.$root.**获取里面的变量或方法
   - router.js文件中meta对象中的配置项，是在路由拦截中使用的
+
+## day4
+- 用css实现文本不定行数截断
+- 组件views/css/TitleClamp.vue
