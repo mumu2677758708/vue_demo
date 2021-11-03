@@ -25,3 +25,6 @@
 ## day4
 - 用css实现文本不定行数截断
 - 组件views/css/TitleClamp.vue
+
+## day5 
+- 实现弹幕效果
