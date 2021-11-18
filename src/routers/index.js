@@ -54,15 +54,9 @@ const router = new VueRouter({
     {
       name: 'turnPages',
       path: '/turn_pages',
-      title: '翻页',
+      title: '翻页时钟',
       component: () => import('../views/css/TurnPages.vue')
     },
-     {
-       name: 'turnPages1',
-       path: '/turn_pages1',
-       title: '翻页时钟',
-       component: () => import('../views/css/TurnPages1.vue')
-     },
      {
        name: 'typing',
        path: '/typing',

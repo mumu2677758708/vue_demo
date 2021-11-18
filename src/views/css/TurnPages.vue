@@ -1,106 +1,214 @@
 <template>
-  <div class="book preserve-3d">
-    <div
-        :class="['now-page','point']"
-        v-for="(item,index) in pages" :key="index"
-        @click.native="handleClick($event)">
-      <div :class="['book-page',{'first-page': index === 3}]">
-        <p>{{item}}</p>
+  <div class="vue-countdown-component">
+    <template v-for="(item, index) in timeArr">
+      <div class="time-box" :key="index">
+        <div class="base">
+          {{ item }}
+          <div class="base-b">{{timeArrayT[index]}}</div>
+        </div>
+        <!-- 翻页动画 -->
+        <div :class="['face', {'animate': animateArr[index]}]" @animationend="onAnimateEnd(index)">{{timeArrayT[index]}}</div>
+        <div :class="['back', {'animate': animateArr[index] }]">{{item}}</div>
       </div>
-    </div>
-    <!-- <div class="now-page point">
-      <div class="book-page">
-        <p>第二页</p>
+      <div
+        class="time-unit"
+        :key="`unit-${index}`"
+        v-if="isTimeUnitShow(index)"
+      >
+        {{ setTimeUnit(index) }}
       </div>
-    </div>
-    <div class="now-page point">
-      <div class="book-page">
-        <p>第一页</p>
-      </div>
-    </div> -->
-    <!-- 封面 -->
-    <div class="now-page point">
-      <div class="book-page first-page">
-        <p>封面</p>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 <script>
-// 实现效果：翻页
 export default {
-  name: 'TurnPages',
-  data () {
+  name: "TurnPages1",
+  data() {
     return {
-      pages: ['第三页', '第二页', '第一页', '封面'],
-      currentIndex: null
+      timeArr: new Array(4).fill("00"),
+      timeArrayT: new Array(4).fill('00'),
+      animateArr: new Array(4).fill(false),
+      timeUnit: "天::",
+      theme: 1, // 每个数字单独分开还是不分开
+      endTime: 1656960815308 // 结束时间
+    };
+  },
+  mounted() {
+    this.start();
+  },
+  computed: {
+    step() {
+      return this.theme === 1 ? 1 : 2;
+    },
+    isTimeUnitShow() {
+      return index => {
+        if (this.timeArr.length - 1 === index && !this.timeUnit[index]) {
+          return false;
+        }
+        return true;
+      };
+    }
+  },
+  watch: {
+    timeArr(newArr, oldArr) {
+      let diff = []
+      newArr.forEach((value,index) => {
+        if(value !== oldArr[index]) {
+          diff.push({value, index})
+          this.$set(this.animateArr, index, true)
+        }
+      })
+      setTimeout(() => {
+        diff.forEach(item => {
+          this.$set(this.timeArrayT, item.index, item.value)
+        })
+      }, 350);
     }
   },
   methods: {
-    handleClick(event) {
-      console.log(11)
-      console.log(event)
-      console.log('event')
+    onAnimateEnd(index) {
+      this.$set(this.animateArr, index, false)
+      // console.log(index)
+    },
+    start(step = 1000) {
+      clearTimeout(timer);
+      const timer = setTimeout(() => {
+        let t = this.endTime - new Date().getTime();
+        t = t < 0 ? 0 : t;
+        let days = 0,
+          hours = 0,
+          mins = 0,
+          seconds = 0;
+        days = Math.floor(t / (24 * 60 * 60 * 1000));
+        hours = Math.floor((t - days * 86400000) / (60 * 60 * 1000));
+        mins = Math.floor((t - days * 86400000 - hours * 3600000) / 60000);
+        seconds = Math.floor(
+          (t - days * 86400000 - hours * 3600000 - mins * 60000) / 1000
+        );
+        // 往数组中添加“天、时、分、秒”
+        this.timeArr = [];
+        this.timeArr.push(String(days).padStart(2, "0"));
+        this.timeArr.push(String(hours).padStart(2, "0"));
+        this.timeArr.push(String(mins).padStart(2, "0"));
+        this.timeArr.push(String(seconds).padStart(2, "0"));
+        if (t > 0) {
+          this.start();
+        }
+      }, step);
+    },
+    setTimeUnit(index) {
+      switch (index) {
+        case this.timeArr.length - 1:
+          return this.timeUnit[3] || ""; // 秒
+        case this.timeArr.length - this.step - 1:
+          return this.timeUnit[2] || ""; // 分
+        case this.timeArr.length - this.step * 2 - 1:
+          return this.timeUnit[1] || ""; // 时
+        default:
+          return this.timeUnit[0] || ""; // 天
+      }
     }
   }
-}
+};
 </script>
 <style lang="less">
-.book{
-  width: 40%;
-  height: 10rem;
-  background: #fff;
-  position: absolute;
-  top: 4rem;
-  right: 10%;
-  transform: rotateX(30deg);
-}
-.now-page{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10rem;
-}
-.book-page{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10rem;
-  background-color: #fff;
-  border: 1px solid #eee;
-  text-align: center;
-  &.first-page{
-    background-color: red;
+// 涉及到的css知识点：
+// 1、perspective：加在父元素上；值越大，越小。效果是使子元素有透视效果
+// 2、backface-visibility
+// 3、clip-path: polygon(）
+.vue-countdown-component {
+  width: 80%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rem auto;
+  .time-unit {
+    padding: 0 0.4rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
   }
-  p{
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    backface-visibility: hidden;
-    font-weight: bold;
-  }
-}
-.animation-start{
-  animation: flipBook1 3s forwards;
-}
-.animation-end {
-  animation: flipBook2 3s forwards;
-}
-@keyframes flipBook1{
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(-160deg);
-  }
-}
-@keyframes flipBook2{
-  0% {
-    transform: rotateY(-160deg);
-  }
-  100% {
-    transform: rotateY(0deg);
+  .time-box {
+    height: 3.3rem;
+    min-width: 3.3rem;
+    border-radius: 0.3rem;
+    background-color: #717ea5;
+    line-height: 3.3rem;
+    text-align: center;
+    font-size: 1.6rem;
+    position: relative;
+    perspective: 3.5rem;
+    &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 0.048rem;
+      background-color: #333;
+      opacity: 0.3;
+      z-index: 99;
+    }
+    & > div {
+      overflow: hidden;
+      animation-timing-function: linear;
+      animation-duration: 400ms;
+      transform: rotateX(-0.01deg);
+      border-radius: 0.1rem;
+    }
+    .face{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: red;
+      backface-visibility: visible;
+      // clip-path: polygon(0 0,100% 0, 100% 50%, 0 50%);
+      z-index: 2;
+      &.animate {
+        animation-name: animate-filp-face;
+      }
+    }
+    .back{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: green;
+      transform: rotateX(-180deg);
+      backface-visibility: visible;
+      // clip-path: polygon(0 50%,100% 50%,100% 100%, 0 100%);
+      &.animate {
+        animation-name: animate-filp-back;
+      }
+    }
+    @keyframes animate-filp-face {
+      0% {
+        transform: rotateX(-0.01deg);
+        // opacity: 1;
+      }
+      50% {
+        // opacity: 1;
+      }
+      51% {
+        opacity: 0;
+      }
+      100% {
+        transform: rotateX(-180deg);
+        opacity: 0;
+      }
+    }
+    @keyframes animate-filp-back {
+      0% {
+        transform: rotateX(180deg);
+      }
+      100% {
+        transform: rotateX(-0.01deg);
+      }
+    }
   }
 }
 </style>
