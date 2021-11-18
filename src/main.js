@@ -5,20 +5,22 @@ import { ScrollFixed } from './utils/directive'
 // import './styles/app.scss'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
+import filters from './filters/index.js'
 Vue.use(Vant);
+for(let key in filters) {
+  Vue.filter(key, filters[key])
+}
 
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  console.log(ScrollFixed, 'to')
   ScrollFixed.unlock('app')
   next()
 })
 
 new Vue({
   mounted() {
-    console.log(this.$root, 'root')
+    // console.log(this.$root, 'root')
   },
   router,
   render: h => h(App),
