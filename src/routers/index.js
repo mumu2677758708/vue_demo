@@ -63,6 +63,12 @@ const router = new VueRouter({
        title: '打字效果',
        component: () => import('../views/css/Typing.vue')
      },
+     {
+       name: 'vuex',
+       path: '/vuex',
+       title: '数据集中管理',
+       component: () => import('../views/Vuex.vue')
+     },
     {
       name: 'demo',
       path: '/demo',

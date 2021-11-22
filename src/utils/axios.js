@@ -19,7 +19,6 @@ AxiosService.interceptors.request.use(config => {
   var params = {}
   var data = {}
   var dataString = false
-
   if(config.method === 'get') {
     params = config.params
   }

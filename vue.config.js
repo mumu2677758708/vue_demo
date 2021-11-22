@@ -2,7 +2,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/fundClient": {
-        target: "http://gateway.155.test.yirendai.com",
+        target: "https://yingapi.yirendai.com",
         changeOrigin: true
       },
     },

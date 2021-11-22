@@ -40,3 +40,14 @@
 - 兄弟组件传值
 - 实现“文字依次渐变显示”的效果
 - 实现“翻页时钟”的效果
+
+## day8
+- vuex：集中式状态管理工具
+  - 在组件A中用vuex存入数据，在进入组件B时，获取vuex中的数据，是可以拿到的，不过刷新页面后，数据就没了
+  - 解决办法：
+    - 1、在组件B中重新获取
+    - 2、用vuex-persistedstate这个插件，让vuex持久化管理状态成为可能
+      - 使用方法：
+        - 安装：yarn add vuex-persistedstate
+        - 在store/index.js文件中引入，在new Vuex.Store({ plugins: [persistedState()],state: {}})中注入
+

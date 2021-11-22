@@ -7,12 +7,19 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Demo',
   data() {
     return {
       price: '13222434.111'
     }
+  },
+  computed: {
+    ...mapState(['category'])
+  },
+  mounted() {
+    console.log(this.category, 'category')
   }
 }
 </script>

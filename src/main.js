@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './routers/index.js'
+import store from './store'
 import { ScrollFixed } from './utils/directive'
 // import './styles/app.scss'
 import Vant from 'vant';
@@ -23,5 +24,6 @@ new Vue({
     // console.log(this.$root, 'root')
   },
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
