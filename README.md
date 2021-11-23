@@ -49,5 +49,9 @@
     - 2、用vuex-persistedstate这个插件，让vuex持久化管理状态成为可能
       - 使用方法：
         - 安装：yarn add vuex-persistedstate
-        - 在store/index.js文件中引入，在new Vuex.Store({ plugins: [persistedState()],state: {}})中注入
+        - 在store/index.js文件中引入，在new Vuex.Store({ plugins: [persistedState()],state: {},})中注入
+
+## day9
+- provide/inject:祖先组件向其所有子孙组件传递数据
+  - mounted渲染顺序：孙子 => 儿子 => 爸爸 => 祖先
 

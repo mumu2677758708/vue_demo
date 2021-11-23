@@ -69,6 +69,12 @@ const router = new VueRouter({
        title: '数据集中管理',
        component: () => import('../views/Vuex.vue')
      },
+     {
+       name: 'provice',
+       path: '/provide',
+       title: '祖先组件向其所有子孙组件传递数据',
+       component: () => import('../views/provide/Ancestors.vue')
+     },
     {
       name: 'demo',
       path: '/demo',
