@@ -4,6 +4,8 @@
     <div class="box">
       <div class="small">小盒子</div>
     </div>
+    <div class="text">这位朋友的名字是：{{person.name}}</div>
+    <button @click="handleClick">点我换名</button>
   </div>
 </template>
 <script>
@@ -12,7 +14,8 @@ export default {
   name: 'Demo',
   data() {
     return {
-      price: '13222434.111'
+      price: '13222434.111',
+      person: {}
     }
   },
   computed: {
@@ -20,6 +23,12 @@ export default {
   },
   mounted() {
     console.log(this.category, 'category')
+  },
+  methods: {
+    handleClick() {
+      this.$set(this.person, 'name', '小敏')
+      console.log(this.person)
+    }
   }
 }
 </script>

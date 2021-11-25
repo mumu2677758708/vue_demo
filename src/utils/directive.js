@@ -19,8 +19,6 @@ export const copy = {
     const options = binding.value
     const id = options.id
     const complete = options.complete
-    console.log(el, 'el')
-    console.log(binding, 'binding')
     el.addEventListener('click', function() {
       const dom = document.getElementById(id)
       if (dom && document.execCommand) {

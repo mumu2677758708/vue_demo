@@ -75,6 +75,18 @@ const router = new VueRouter({
        title: '祖先组件向其所有子孙组件传递数据',
        component: () => import('../views/provide/Ancestors.vue')
      },
+     {
+       name: 'pieChart',
+       path: '/pieChart',
+       title: '饼状图',
+       component: () => import('../views/echarts/PieChart.vue')
+     },
+     {
+       name: 'lineChart',
+       path: '/lineChart',
+       title: '线形图',
+       component: () => import('../views/echarts/LineChart.vue')
+     },
     {
       name: 'demo',
       path: '/demo',

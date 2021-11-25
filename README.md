@@ -54,4 +54,14 @@
 ## day9
 - provide/inject:祖先组件向其所有子孙组件传递数据
   - mounted渲染顺序：孙子 => 儿子 => 爸爸 => 祖先
+- echarts学习使用
+- vue-echarts的使用
+  - 安装echarts、vue-echarts
+  - 如果是vue 2.x版本，需要安装@vue/composition-api
+  - 在组件中引入使用
 
+## day10
+- dependencies 和 devDependencies 区别
+  - ## todo 各个项目在包安装上比较混乱，没有界限，理清楚哪些包应正确安装在哪；优化：也就是说，线上加载时直接加载线上链接，而不是打包后的依赖
+  - dependencies 程序正常运行需要的包。依赖的包不仅开发环境能使用，生产环境也能使用
+  - devDependencies 是开发需要的包，比如 一些单元测试的包之类的。只会在开发环境下依赖的模块，生产环境不会被打入包内。比如：webpack、eslint、babel
